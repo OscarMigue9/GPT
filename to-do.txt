@@ -1,0 +1,11 @@
+-Revisar pycache, que es?
+-Revisar bien forward y sus utils, que es cada cosa
+-Estandaririzar carpetas, usar las mismas rutas
+-Eliminar simulaciones innecesarias
+-Revisar los ntbks y quedarnos con los importantes
+-Ver como instanciar el script desde otra carpeta(ntbks), en dc hay info sobre eso
+-Revisar bien el output
+
+Futuro
+-Crear db, diseñar algoritmo que guarde las firmas
+-Array de firma (vector 1xn) y target (vector 1x7) cual n? y que valores de q, P y T?
