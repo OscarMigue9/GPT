@@ -1,1 +1,1 @@
-# GPT
+# Ground Based Transmittance
