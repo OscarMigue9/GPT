@@ -75,6 +75,7 @@ def run_simulation(
     transmission_npy_name: str | None = None,
     species_to_use: List[str] | None = None,
     lsf: Dict[str, Any] | None = None,
+    plot_each: bool = False,
 ) -> Dict[str, Any]:
     """
     Compute transmittances/attenuations and return sampled results.
@@ -232,20 +233,13 @@ def run_simulation(
             min_val = np.min(arr[mask])
             max_val = np.max(arr[mask])
             lower = max(1e-15, min_val * 0.9)
-            upper = max_val * 10.0
+            upper = max_val * 1.1
             if lower >= upper:
-                upper = lower * 10
+                upper = lower * 1.1
             return lower, upper
 
-        def _lin_axis_limits(arr: np.ndarray) -> Tuple[float, float]:
-            arr = np.asarray(arr)
-            mask = np.isfinite(arr)
-            if not np.any(mask):
-                return 0.0, 1.0
-            min_val = np.min(arr[mask])
-            max_val = np.max(arr[mask])
-            padding = max(1e-3, 0.05 * max(1.0, max_val - min_val))
-            return min_val - padding, max_val + padding
+        def _lin_axis_limits(_: np.ndarray) -> Tuple[float, float]:
+            return 0.0, 1.0
 
         def save_fig(fig, basename: str):
             for ext in EXPORT_FORMATS:
@@ -269,6 +263,24 @@ def run_simulation(
             save_fig(fig, "attenuation_total")
             plt.show()
             plt.close(fig)
+
+            if plot_each:
+                fig, ax = plt.subplots(figsize=FIGSIZE)
+                for sp, A_arr in zip(species, A_dbm_lam_each):
+                    A_plot = _positivize(A_arr)
+                    ax.semilogy(lambda_centers, A_plot, lw=2.0, label=sp.name)
+                ax.set_xlabel("Wavelength (µm)")
+                ax.set_ylabel("Attenuation (dB/m)")
+                ax.set_title("Atmospheric attenuation by gas")
+                ax.set_ylim(*_log_axis_limits(A_plot))
+                ax.yaxis.set_major_locator(LogLocator(base=10.0))
+                ax.grid(True, which="major", axis="both", linestyle="-", linewidth=0.8, alpha=0.5)
+                ax.grid(True, which="minor", axis="both", linestyle=":", linewidth=0.5, alpha=0.3)
+                ax.legend(loc="upper right", frameon=True, fancybox=True, shadow=True)
+                plt.tight_layout()
+                save_fig(fig, "attenuation_by_gas")
+                plt.show()
+                plt.close(fig)
         else:
             fig, ax = plt.subplots(figsize=FIGSIZE)
             ax.plot(lambda_centers, T_prod_samp, lw=2.5, label="Total")
@@ -282,6 +294,21 @@ def run_simulation(
             save_fig(fig, "transmittance_total")
             plt.show()
             plt.close(fig)
+
+            if plot_each:
+                fig, ax = plt.subplots(figsize=FIGSIZE)
+                for sp, T_arr in zip(species, T_each_samp):
+                    ax.plot(lambda_centers, T_arr, lw=2.0, label=sp.name)
+                ax.set_xlabel("Wavelength (µm)")
+                ax.set_ylabel("Transmittance")
+                ax.set_title("Atmospheric transmittance by gas")
+                ax.set_ylim(*_lin_axis_limits(T_prod_samp))
+                ax.grid(True, which="both", linestyle="-", linewidth=0.8, alpha=0.5)
+                ax.legend(loc="lower left", frameon=True, fancybox=True, shadow=True)
+                plt.tight_layout()
+                save_fig(fig, "transmittance_by_gas")
+                plt.show()
+                plt.close(fig)
 
     # CSV export (kept)
     if save_csv:

@@ -7,5 +7,8 @@
 -Revisar bien el output
 
 Futuro
+-Entender en que rango estamos
+-Ver de que resolucion, tamaño y rango va a tener la data "real", para que tenga sentido 
+al momento de hacer inferencia
 -Crear db, diseñar algoritmo que guarde las firmas
 -Array de firma (vector 1xn) y target (vector 1x7) cual n? y que valores de q, P y T?

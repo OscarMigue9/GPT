@@ -20,16 +20,17 @@ def main():
     res = run_simulation(
         species=sp,
         parfile='C:/Users/PC/Documents/GitHub/GPT/pars/ALL.par',
-        nu_min=1900, nu_max=2300, dnu=0.01,
+        nu_min=666.67, nu_max=2500.0, dnu=0.1,
         tileW=20.0, guard=25.0,
         temp_K=T, L_m=L_m, pres=Ptotal, #standard 1 atm
-        delta_um= 0.0000575,
-        save_csv=True, outdir="C:/Users/PC/Documents/GitHub/GPT/out", make_plots=True,
+        delta_um= 0.1,
+        save_csv=False, outdir="C:/Users/PC/Documents/GitHub/GPT/out", make_plots=True,
         att=True,
-        transmission_npy_name="Simulated_CH4_lsf.npy",
+        transmission_npy_name="Simulated_All_lsf.npy",
         use_all_isotopologues=True,
-        species_to_use=['CH4'], # IMPORTANT: None => run all gases
+        species_to_use=['H2O', 'CO2'], # IMPORTANT: None => run all gases
         lsf={"kind": "gaussian", "W_cm1": 0.05, "domain": "tau"}, 
+        plot_each= True
     )
 
     lambda_um = res["lambda_centers"]
