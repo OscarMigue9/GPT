@@ -232,10 +232,10 @@ def run_simulation(
                 return 1e-15, 1e4
             min_val = np.min(arr[mask])
             max_val = np.max(arr[mask])
-            lower = max(1e-15, min_val * 0.9)
-            upper = max_val * 1.1
+            lower = max(1e-15, min_val / 10.0)
+            upper = max_val * 10.0
             if lower >= upper:
-                upper = lower * 1.1
+                upper = lower * 10.0
             return lower, upper
 
         def _lin_axis_limits(_: np.ndarray) -> Tuple[float, float]:
