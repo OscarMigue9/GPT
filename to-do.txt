@@ -1,14 +1,31 @@
--Revisar pycache, que es?
--Revisar bien forward y sus utils, que es cada cosa
+Codigo:
 -Estandaririzar carpetas, usar las mismas rutas
 -Eliminar simulaciones innecesarias
 -Revisar los ntbks y quedarnos con los importantes
 -Ver como instanciar el script desde otra carpeta(ntbks), en dc hay info sobre eso
+-Revisar pycache, que es?
+-Revisar bien forward y sus utils, que es cada cosa
 -Revisar bien el output
 
-Futuro
+Teoria:
+-Saber como se relacionan las concentraciones entre sí, con la presión y con la temperatura
+-Que rangos y cambios de particiones abarcar, son gases traza (menores al 1%), debemos condicionar el problema a no tener souciones infinitas
+-Como manejamos esas Presiones? hay alguna manera de quitar esa diferencia? o la asumiremos uniforme en stand-off (un solo slap)
+-Paper de Oscar revisarlo y hacer tipo presentación entre todos
+-Revisar segundo paper de ML aplicada
+
+Futuro:
 -Entender en que rango estamos
 -Ver de que resolucion, tamaño y rango va a tener la data "real", para que tenga sentido 
 al momento de hacer inferencia
 -Crear db, diseñar algoritmo que guarde las firmas
 -Array de firma (vector 1xn) y target (vector 1x7) cual n? y que valores de q, P y T?
+
+Roadmap:
+-Minimizar tiempos de ejecucion (entender bien el codigo y buscar falencias)
+-Definir Stand off o Satelital
+-Encontrar dataset en el cual basar simulacion (rango y resolucion)
+-Ver estado del arte respecto a learning (no enfocado, general para esos casos)
+-DB
+
+
