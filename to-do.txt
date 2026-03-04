@@ -1,11 +1,11 @@
 Codigo:
--Estandaririzar carpetas, usar las mismas rutas
--Eliminar simulaciones innecesarias
--Revisar los ntbks y quedarnos con los importantes
--Ver como instanciar el script desde otra carpeta(ntbks), en dc hay info sobre eso
--Revisar pycache, que es? 
--Revisar bien forward y sus utils, que es cada cosa
--Revisar bien el output
+-Estandaririzar carpetas, usar las mismas rutas (uno)
+-Eliminar simulaciones innecesarias (uno)
+-Revisar los ntbks y quedarnos con los importantes (uno)
+-Ver como instanciar el script desde otra carpeta(ntbks), en dc hay info sobre eso (uno)
+-Revisar pycache, que es?  (uno)
+-Revisar bien forward y sus utils, que es cada cosa (los dosh)
+-Revisar bien el output (uno)
 -Hacer ploteo de presion y temperatura (PY4CATS)- revisar analisis ✅
 
 Teoria:
@@ -23,7 +23,7 @@ al momento de hacer inferencia
 -Array de firma (vector 1xn) y target (vector 1x7) cual n? y que valores de q, P y T?
 
 Roadmap:
--Minimizar tiempos de ejecucion (entender bien el codigo y buscar falencias)
+-Minimizar tiempos de ejecucion (entender bien el codigo y buscar falencias) (los dosh, hacer una copia cada uno del ipynb y chicanear)
 -Definir Stand off o Satelital
 -Encontrar dataset en el cual basar simulacion (rango y resolucion)
 -Ver estado del arte respecto a learning (no enfocado, general para esos casos)
