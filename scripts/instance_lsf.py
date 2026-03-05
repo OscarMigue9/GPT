@@ -1,5 +1,11 @@
 # instance.py
+import os
+from pathlib import Path
 from forward import *
+
+PROJECT_ROOT = Path(__file__).parent.parent
+os.chdir(PROJECT_ROOT)
+
 
 def main():
     Ptotal = convert_atm(1013, "mbar")  # total pressure [atm]
@@ -19,12 +25,12 @@ def main():
 
     res = run_simulation(
         species=sp,
-        parfile='C:/Users/PC/Documents/GitHub/GPT/pars/ALL.par',
+        parfile='pars/ALL.par',
         nu_min=666.67, nu_max=2500.0, dnu=0.1,
         tileW=20.0, guard=25.0,
         temp_K=T, L_m=L_m, pres=Ptotal, #standard 1 atm
         delta_um= 0.1,
-        save_csv=False, outdir="C:/Users/PC/Documents/GitHub/GPT/out", make_plots=True,
+        save_csv=False, outdir="out", make_plots=True,
         att=True,
         transmission_npy_name="Simulated_All_lsf.npy",
         use_all_isotopologues=True,

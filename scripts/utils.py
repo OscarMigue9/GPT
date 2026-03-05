@@ -57,7 +57,7 @@ def _prepare_forward_variants(species: List["Species"], use_all: bool) -> Tuple[
 
 
 def _isotopologue_bank(
-    base: str = "C:/Users/PC/Documents/GitHub/GPT/tips/"
+    base: str = "tips/"
 ) -> Dict[str, Dict[str, Any]]:
     """Catálogo de isotopólogos y Q-files."""
     from forward import Isotopologue  # local import

@@ -56,7 +56,7 @@ class Species:
 # ========================= MAIN FUNCTION =========================
 def run_simulation(
     species: List[Species],
-    parfile: str = '../../pars/ALL.par',
+    parfile: str = 'pars/ALL.par',
     nu_min: float = 666.67,
     nu_max: float = 10000.0,
     dnu: float = 0.01,
@@ -71,7 +71,7 @@ def run_simulation(
     make_plots: bool = True,
     att: bool = True,
     use_all_isotopologues: bool = False,
-    simulated_dir: str = 'C:/Users/PC/Documents/GitHub/GPT/simulated',
+    simulated_dir: str = 'data/simulated',
     transmission_npy_name: str | None = None,
     species_to_use: List[str] | None = None,
     lsf: Dict[str, Any] | None = None,
