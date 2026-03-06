@@ -2,8 +2,8 @@ Codigo:
 -Estandaririzar carpetas, usar las mismas rutas (uno) ✅
 -Eliminar simulaciones innecesarias (uno)
 -Revisar los ntbks y quedarnos con los importantes (uno)
--Ver como instanciar el script desde otra carpeta(ntbks), en dc hay info sobre eso (uno)
--Revisar pycache, que es?  (uno)
+-Ver como instanciar el script desde otra carpeta(ntbks), en dc hay info sobre eso (uno) ✅
+-Revisar pycache, que es?  (uno) ✅
 -Revisar bien forward y sus utils, que es cada cosa (los dosh)
 -Revisar bien el output (uno)
 -Hacer ploteo de presion y temperatura (PY4CATS)- revisar analisis ✅
