@@ -7,6 +7,7 @@ Codigo:
 -Revisar bien forward y sus utils, que es cada cosa (los dosh)
 -Revisar bien el output (uno)
 -Hacer ploteo de presion y temperatura (PY4CATS)- revisar analisis ✅
+-Graficos interesantes: ppVs de la uss contra Presion, y contra altura, en la misma escala
 
 Teoria:
 -Saber como se relacionan las concentraciones entre sí, con la presión y con la temperatura
