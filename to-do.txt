@@ -15,6 +15,7 @@ Teoria:
 -Como manejamos esas Presiones? hay alguna manera de quitar esa diferencia en las firmas segun la presion? o la asumiremos uniforme en stand-off (un solo slap)
 -Paper de Oscar revisarlo y hacer tipo presentación entre todos
 -Revisar segundo paper de ML aplicada
+-Revisar paper que mando nicolas
 
 Futuro:
 -Entender en que rango estamos
