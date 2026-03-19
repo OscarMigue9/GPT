@@ -34,7 +34,7 @@ def main():
         att=True,
         transmission_npy_name="Simulated_All_lsf.npy",
         use_all_isotopologues=True,
-        species_to_use=['H2O', 'CO2'], # IMPORTANT: None => run all gases
+        species_to_use= None, # IMPORTANT: None => run all gases
         lsf={"kind": "gaussian", "W_cm1": 0.05, "domain": "tau"}, 
         plot_each= True
     )

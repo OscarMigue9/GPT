@@ -225,15 +225,27 @@ def run_simulation(
             eps = max(1e-12, np.nanmin(a[a > 0]) * 0.1) if np.any(a > 0) else 1e-12
             return np.clip(a, eps, None)
 
-        def _log_axis_limits(arr: np.ndarray) -> Tuple[float, float]:
-            arr = np.asarray(arr)
-            mask = (arr > 0) & np.isfinite(arr)
-            if not np.any(mask):
+        def _log_axis_limits(*arrs: np.ndarray, margin_decades: float = 0.2) -> Tuple[float, float]:
+            if len(arrs) == 0:
                 return 1e-15, 1e4
-            min_val = np.min(arr[mask])
-            max_val = np.max(arr[mask])
-            lower = max(1e-15, min_val / 10.0)
-            upper = max_val * 10.0
+
+            vals = []
+            for arr in arrs:
+                a = np.asarray(arr)
+                mask = (a > 0) & np.isfinite(a)
+                if np.any(mask):
+                    vals.append(a[mask])
+
+            if not vals:
+                return 1e-15, 1e4
+
+            merged = np.concatenate(vals)
+            min_val = float(np.min(merged))
+            max_val = float(np.max(merged))
+
+            factor = 10.0 ** float(max(0.0, margin_decades))
+            lower = max(1e-15, min_val / factor)
+            upper = max_val * factor
             if lower >= upper:
                 upper = lower * 10.0
             return lower, upper
@@ -266,13 +278,13 @@ def run_simulation(
 
             if plot_each:
                 fig, ax = plt.subplots(figsize=FIGSIZE)
-                for sp, A_arr in zip(species, A_dbm_lam_each):
-                    A_plot = _positivize(A_arr)
+                A_each_plot = [_positivize(A_arr) for A_arr in A_dbm_lam_each]
+                for sp, A_plot in zip(species, A_each_plot):
                     ax.semilogy(lambda_centers, A_plot, lw=2.0, label=sp.name)
                 ax.set_xlabel("Wavelength (µm)")
                 ax.set_ylabel("Attenuation (dB/m)")
                 ax.set_title("Atmospheric attenuation by gas")
-                ax.set_ylim(*_log_axis_limits(A_plot))
+                ax.set_ylim(*_log_axis_limits(*A_each_plot, margin_decades=0.2))
                 ax.yaxis.set_major_locator(LogLocator(base=10.0))
                 ax.grid(True, which="major", axis="both", linestyle="-", linewidth=0.8, alpha=0.5)
                 ax.grid(True, which="minor", axis="both", linestyle=":", linewidth=0.5, alpha=0.3)
